@@ -8,5 +8,10 @@
     "typecheck": "pnpm -r run typecheck",
     "build": "pnpm --filter client build"
   },
-  "packageManager": "pnpm@12.6.0"
+  "packageManager": "pnpm@12.6.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shubham-bodiwal/realtime-inbox.git"
+  },
+  "homepage": "https://github.com/shubham-bodiwal/realtime-inbox#readme"
 }
