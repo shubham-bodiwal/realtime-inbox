@@ -47,7 +47,7 @@ async function client(userId: string, role: Role) {
 }
 
 afterEach(async () => {
-  sockets.splice(0).forEach((s) => s.terminate());
+  for (const s of sockets.splice(0)) s.terminate();
   await new Promise((r) => http.close(r));
 });
 

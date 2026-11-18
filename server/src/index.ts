@@ -13,7 +13,9 @@ const seed: [string, string, string[]][] = [
 for (const [id, name, lines] of seed) {
   const conv = customerConv(id);
   store.ensureConversation(conv, id, name);
-  lines.forEach((body, i) => store.append(conv, { clientId: `seed-${id}-${i}`, from: id, fromName: name, body }));
+  lines.forEach((body, i) => {
+    store.append(conv, { clientId: `seed-${id}-${i}`, from: id, fromName: name, body });
+  });
 }
 
 const http = createServer((_req, res) => res.writeHead(200).end('realtime-inbox ws server, connect to /ws\n'));

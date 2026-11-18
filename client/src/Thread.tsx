@@ -27,6 +27,7 @@ export function Thread({ me, conv, pending, empty, onSend, onRetry, onTyping }: 
   const seen = lastMine && Object.entries(conv.summary.reads).some(([u, s]) => u !== me && s >= lastMine.seq);
   const typers = Object.values(conv.typing).map((t) => t.name);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: scroll when a row or typing indicator is added
   useEffect(() => {
     list.current?.scrollTo({ top: list.current.scrollHeight });
   }, [rows.length, typers.length]);
@@ -60,8 +61,8 @@ export function Thread({ me, conv, pending, empty, onSend, onRetry, onTyping }: 
           );
         })}
         {typers.length > 0 && (
-          <div className="typing" aria-label={`${typers.join(', ')} typing`}>
-            <span /><span /><span />
+          <div className="typing">
+            <span aria-hidden="true" /><span aria-hidden="true" /><span aria-hidden="true" />
             <em>{typers.join(', ')} is typing</em>
           </div>
         )}

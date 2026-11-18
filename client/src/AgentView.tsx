@@ -22,6 +22,7 @@ export function AgentView() {
   const totalUnread = convs.reduce((n, c) => n + unreadCount(c, AGENT.userId), 0);
 
   // Reading an open conversation while the tab is visible clears its unread count.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: re-mark when the open conversation or its message count changes
   useEffect(() => {
     if (!active) return;
     const mark = () => !document.hidden && markRead(active.summary.id);
@@ -71,7 +72,7 @@ export function AgentView() {
                   aria-current={c.summary.id === selected} onClick={() => setSelected(c.summary.id)}>
                   <span className="avatar">
                     {initials(c.summary.customerName)}
-                    {online && <i className="presence" aria-label="online" />}
+                    {online && <i className="presence" role="img" aria-label="online" />}
                   </span>
                   <span className="conv-main">
                     <span className="conv-top">
@@ -82,7 +83,7 @@ export function AgentView() {
                       <span className="preview">
                         {isTyping ? <em>typing</em> : last ? `${last.from === AGENT.userId ? 'You: ' : ''}${last.body}` : 'No messages yet'}
                       </span>
-                      {unread > 0 && <span className="badge" aria-label={`${unread} unread`}>{unread}</span>}
+                      {unread > 0 && <span className="badge">{unread}<span className="sr-only"> unread</span></span>}
                     </span>
                   </span>
                 </button>

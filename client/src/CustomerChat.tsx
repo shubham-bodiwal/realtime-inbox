@@ -13,6 +13,7 @@ export function CustomerChat({ onClose }: { onClose?: () => void }) {
   const conv = state.convs[convId];
   const agentOnline = state.online.some((u) => u.startsWith('agent-'));
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: re-mark when a new message arrives
   useEffect(() => {
     const mark = () => !document.hidden && markRead(convId);
     mark();

@@ -169,6 +169,7 @@ export function useInbox({ url, me, onIncoming }: InboxOptions) {
   const connectRef = useRef<() => void>(() => {});
   const retryTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: reconnect only when the server URL or identity changes
   useEffect(() => {
     let closed = false;
 
