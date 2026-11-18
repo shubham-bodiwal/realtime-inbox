@@ -1,0 +1,12 @@
+{
+  "name": "realtime-inbox",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm -r --parallel run dev",
+    "test": "pnpm -r run test",
+    "typecheck": "pnpm -r run typecheck",
+    "build": "pnpm --filter client build"
+  },
+  "packageManager": "pnpm@12.6.0"
+}
