@@ -218,8 +218,12 @@ export function useInbox({ url, me, onIncoming }: InboxOptions) {
     return () => {
       closed = true;
       clearTimeout(retryTimer.current);
-      ws.current?.close();
-      timers.forEach(clearTimeout);
+      const sock = ws.current;
+      // Closing a socket that is still connecting logs a browser warning (React StrictMode
+      // mounts effects twice in dev), so close it once it opens instead.
+      if (sock?.readyState === 0) sock.onopen = () => sock.close();
+      else sock?.close();
+      for (const t of timers.values()) clearTimeout(t);
     };
   }, [url, me.userId, me.role]);
 
