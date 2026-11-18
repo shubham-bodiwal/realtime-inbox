@@ -6,12 +6,31 @@
     "dev": "pnpm -r --parallel run dev",
     "test": "pnpm -r run test",
     "typecheck": "pnpm -r run typecheck",
-    "build": "pnpm --filter client build"
+    "build": "pnpm --filter client build",
+    "lint": "biome lint ."
   },
   "packageManager": "pnpm@12.6.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shubham-bodiwal/realtime-inbox.git"
   },
-  "homepage": "https://github.com/shubham-bodiwal/realtime-inbox#readme"
+  "homepage": "https://github.com/shubham-bodiwal/realtime-inbox#readme",
+  "devDependencies": {
+    "@biomejs/biome": "2.6.8"
+  },
+  "description": "Real-time support inbox: WebSocket server with resume and dedupe, React agent console and customer widget.",
+  "keywords": [
+    "websocket",
+    "realtime",
+    "chat",
+    "support",
+    "react",
+    "nodejs"
+  ],
+  "author": "Shubham Bhodiwal (https://github.com/shubham-bodiwal)",
+  "license": "MIT",
+  "bugs": "https://github.com/shubham-bodiwal/realtime-inbox/issues",
+  "engines": {
+    "node": ">=22"
+  }
 }
